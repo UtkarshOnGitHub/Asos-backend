@@ -11,6 +11,13 @@ products.get("/" ,async (req,res)=>{
     res.send({data:data})
 })
 
+products.get("/singleData" ,async (req,res)=>{
+    let {id} = req.query
+    const data = await ProductModel.findById(id)
+    res.send({data:data})
+})
+
+
 
 
 
