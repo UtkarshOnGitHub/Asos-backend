@@ -7,8 +7,10 @@ const cart = express.Router();
 
 
 cart.get("/", async(req,res)=>{
+    const user = req.headers
+    console.log(user.id,"user")
     try {
-        let data = await cartProduct.find({}).populate("userId").populate("productId")
+        let data = await cartProduct.find({userId:user.id}).populate("userId").populate("productId")
         res.send(data)
     } catch (error) {
         console.log(error)
