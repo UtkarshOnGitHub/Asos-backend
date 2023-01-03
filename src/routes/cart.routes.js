@@ -44,4 +44,18 @@ cart.delete("/:id", async(req,res)=>{
 })
 
 
+cart.patch("/", async(req,res)=>{
+    const {id,qty} = req.headers
+    try {
+        let response = await cartProduct.findById(id);
+        let update = response.qty + (+qty)
+        let data = await cartProduct.findByIdAndUpdate(id,{qty:update});
+        res.send(data)
+    } catch (error) {
+        console.log(error)
+    }
+
+})
+
+
 module.exports = cart
