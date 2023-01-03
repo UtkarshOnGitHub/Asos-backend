@@ -44,7 +44,7 @@ cart.delete("/:id", async(req,res)=>{
 })
 
 
-cart.post("/", async(req,res)=>{
+cart.post("/qty", async(req,res)=>{
     const {id,qty} = req.headers
     try {
         let response = await cartProduct.findById(id);
