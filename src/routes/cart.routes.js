@@ -45,7 +45,7 @@ cart.delete("/:id", async(req,res)=>{
 
 
 cart.post("/qty", async(req,res)=>{
-    const {id,qty} = req.headers
+    const {id,qty} = req.body
     try {
         let response = await cartProduct.findById(id);
         let update = response.qty + (+qty)
