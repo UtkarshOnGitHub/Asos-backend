@@ -33,7 +33,7 @@ cart.post("/", async(req,res)=>{
 
 
 cart.delete("/:id", async(req,res)=>{
-    const {id} = req.headers
+    const {id} = req.params
     try {
         await cartProduct.findByIdAndDelete(id);
         res.send("Deleted")
