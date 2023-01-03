@@ -49,8 +49,8 @@ cart.patch("/", async(req,res)=>{
     try {
         let response = await cartProduct.findById(id);
         let update = response.qty + (+qty)
-        let data = await cartProduct.findByIdAndUpdate(id,{qty:update});
-        res.send(data)
+        await cartProduct.findByIdAndUpdate(id,{qty:update});
+        res.send("Updated")
     } catch (error) {
         console.log(error)
     }
