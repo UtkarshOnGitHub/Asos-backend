@@ -44,7 +44,7 @@ cart.delete("/:id", async(req,res)=>{
 })
 
 
-cart.patch("/", async(req,res)=>{
+cart.post("/", async(req,res)=>{
     const {id,qty} = req.headers
     try {
         let response = await cartProduct.findById(id);
@@ -55,7 +55,6 @@ cart.patch("/", async(req,res)=>{
     } catch (error) {
         console.log(error)
     }
-
 })
 
 
