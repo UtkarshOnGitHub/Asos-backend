@@ -70,7 +70,29 @@ user.post("/getuser" , async (req,res)=>{
 })
 
 
+user.get("/",async(req,res)=>{
+    const data = await UserModel.find({})
+    res.send(data)
+})
 
+user.post("/admin" , async(req,res)=>{
+    const {token} = req.body;
+    if(!token){
+        res.status(401).send("Unauthorized")
+    }
+    try{
+        const verification = jwt.verify(token , "HASHIRA")
+        console.log(verification)
+        if(verification.email==="admin@gmail.com"){
+            res.send("approved")
+        }else{
+            res.send("not approved")
+        }
+        
+    }catch(e){
+        res.status(401).send("Invalid Token")
+    }
+})
 
 
 module.exports = user
