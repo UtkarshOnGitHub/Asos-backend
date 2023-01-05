@@ -49,8 +49,8 @@ user.post("/login" , async(req,res)=>{
     if(!user){
         return res.send("Invalid Credential")
     }
-    const token = jwt.sign({id:user._id ,email:user.email,age:user.age}, "HASHIRA" , {
-        expiresIn:"24 hours"
+    const token = jwt.sign({id:user._id ,email:user.email}, "HASHIRA" , {
+        expiresIn:"48 hours"
     })
     res.send({message:"Token Generated",token:token}).status(200)
 })
